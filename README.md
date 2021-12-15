@@ -7,7 +7,7 @@
 /lottogive   
 Give a random box to the command sender (Only OP)   
 
-
+---
 Settings about **normal** rewards   
 
 
@@ -22,7 +22,7 @@ Delete all normal rewards
 /lottoitemnormallist  
 Print all normal rewards   
 
-
+---
 Settings about **rare** rewards   
 
 
@@ -37,7 +37,7 @@ Delete all rare rewards
 /lottoitemrarelist  
 Print all rare rewards   
 
-
+---
 Settings about **super rare** rewards   
 
 
