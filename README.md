@@ -3,6 +3,8 @@
 >[스크립트 2.6](https://github.com/SkriptLang/Skript/releases)   
 >based on [Skript 2.6](https://github.com/SkriptLang/Skript/releases)  
 ---
+![GIF](https://user-images.githubusercontent.com/31058262/146145491-0585b8af-b862-4293-8ff8-3000214aaa1b.gif)
+---
 
 /lottogive   
 Give a random box to the command sender (Only OP)   
