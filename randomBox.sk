@@ -1,0 +1,170 @@
+#
+#Github https://github.com/MCGameSK/Random-Box
+#
+
+
+
+options:
+    LottoSuperRareChance: 0.2 #Super Rare Chance out of 100
+    LottoRareChance: 4 #Rare Chance out of 100
+
+
+
+on load:
+    set {lottoBase} to chest named "&e&l[ &6&lRANDOM BOX &e&l]" with lore "&8&oRight Click to Use&r&k&r" and " " and "&eReward: &d&kRANDOM"
+
+
+
+on right click:
+    if 1 of player's offhand tool is {lottoBase}:
+        cancel event
+
+        message "&c&oUse your main hand!"
+        exit
+
+
+
+    if 1 of player's tool is {lottoBase}:
+        cancel event
+
+        if {lottoNormal::*} is not set:
+            message "&c&oReward is not set"
+            exit
+
+        remove 1 of player's tool from inventory of player
+
+        if chance of {@LottoSuperRareChance}%:
+            if {lottoSuperRare::*} is set:
+                set {_giving} to random element of {lottoSuperRare::*}
+                if player has enough space for {_giving}:
+                    give player {_giving}
+                else:
+                    drop {_giving} at player
+
+                message "&e&oYou won the &d&lSuper Rare &e&oreward"
+                send title " " with subtitle "&6Congratulations!" to player for 3 seconds
+                play sound "ui.toast.challenge_complete" with volume 1 for player
+                exit
+
+        if chance of {@LottoRareChance}%:
+            if {lottoRare::*} is set:
+                set {_giving} to random element of {lottoRare::*}
+                if player has enough space for {_giving}:
+                    give player {_giving}
+                else:
+                    drop {_giving} at player
+
+                message "&e&oYou won the &c&lRare &e&oreward"
+                play sound "entity.ender_eye.death" with volume 1 for player
+                exit
+
+        set {_giving} to random element of {lottoNormal::*}
+        if player has enough space for {_giving}:
+            give player {_giving}
+        else:
+            drop {_giving} at player
+
+        message "&e&oYou won the &e&lNormal &e&oreward"
+        play sound "block.ender_chest.open" with volume 0.5 and pitch 1.8 for player
+
+
+
+command /lottoGive:
+    trigger:
+        if player is op:
+            give player {lottoBase}
+        else:
+            message "&c&oOP required"
+
+
+
+command /lottoItemSuperRareSet:
+    trigger:
+        if player is op:
+            if player's tool is 0 air:
+                message "&c&oHold items on main hand you want to add"
+                exit
+            add player's tool to {lottoSuperRare::*}
+            message "&e&lAdded Super Rare [ %player's tool% ]"
+
+        else:
+            message "&c&oOP required"
+
+command /lottoItemSuperRareDelete:
+    trigger:
+        if player is op:
+            delete {lottoSuperRare::*}
+            message "&c&lDeleted all super rares"
+        else:
+            message "&c&oOP required"
+
+command /lottoItemSuperRareList:
+    trigger:
+        if player is op:
+            message "&a&lSuper Rare list"
+            loop {lottoSuperRare::*}:
+                message "%loop-value%"
+        else:
+            message "&c&oOP required"
+
+
+
+command /lottoItemRareSet:
+    trigger:
+        if player is op:
+            if player's tool is 0 air:
+                message "&c&oHold items on main hand you want to add"
+                exit
+            add player's tool to {lottoRare::*}
+            message "&e&lAdded Rare [ %player's tool% ]"
+
+        else:
+            message "&c&oOP required"
+
+command /lottoItemRareDelete:
+    trigger:
+        if player is op:
+            delete {lottoRare::*}
+            message "&c&lDeleted all rares"
+        else:
+            message "&c&oOP required"
+
+command /lottoItemRareList:
+    trigger:
+        if player is op:
+            message "&a&lRare list"
+            loop {lottoRare::*}:
+                message "%loop-value%"
+        else:
+            message "&c&oOP required"
+
+
+
+command /lottoItemNormalSet:
+    trigger:
+        if player is op:
+            if player's tool is 0 air:
+                message "&c&oHold items on main hand you want to add"
+                exit
+
+            add player's tool to {lottoNormal::*}
+            message "&e&lAdded Normal [ %player's tool% ]"
+        else:
+            message "&c&oOP required"
+
+command /lottoItemNormalDelete:
+    trigger:
+        if player is op:
+            delete {lottoNormal::*}
+            message "&c&lDeleted all normals"
+        else:
+            message "&c&oOP required"
+
+command /lottoItemNormalList:
+    trigger:
+        if player is op:
+            message "&a&lNormal list"
+            loop {lottoNormal::*}:
+                message "%loop-value%"
+        else:
+            message "&c&oOP required"
