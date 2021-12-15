@@ -8,7 +8,7 @@
 Give a random box to the command sender (Only OP)   
 
 ---
-Settings about **normal** rewards   
+### Settings about **normal** rewards   
 
 
 /lottoitemnormalset  
@@ -23,7 +23,7 @@ Delete all normal rewards
 Print all normal rewards   
 
 ---
-Settings about **rare** rewards   
+### Settings about **rare** rewards   
 
 
 /lottoitemrareset  
@@ -38,7 +38,7 @@ Delete all rare rewards
 Print all rare rewards   
 
 ---
-Settings about **super rare** rewards   
+### Settings about **super rare** rewards   
 
 
 /lottoitemsuperrareset  
