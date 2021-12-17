@@ -41,9 +41,9 @@ on right click:
                 else:
                     drop {_giving} at player
 
-                message "&e&oYou won the &d&lSuper Rare &e&oreward"
+                message "&e&o%player% won the &d&lSuper Rare &e&oreward" to all players
                 send title " " with subtitle "&6Congratulations!" to player for 3 seconds
-                play sound "ui.toast.challenge_complete" with volume 1 for player
+                play sound "ui.toast.challenge_complete" with volume 1 for all players
                 exit
 
         if chance of {@LottoRareChance}%:
